@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\dashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,6 @@ Route::get('/login', function () {
     return view('/login');
 });
 
-Route::get('/dashboard', function () {
-    return view('/dashboard');
-});
 Route::post('/signupform',[SignupController::class,'Signup']);
 Route::post('/userlogin',[LoginController::class,'LoginForm']);
-Route::get('/retreive',)
+Route::get('/dashboard',[dashboardController::class,'dashboardUser']);
