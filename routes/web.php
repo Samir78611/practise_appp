@@ -25,5 +25,10 @@ Route::get('/signup', function () {
 Route::get('/login', function () {
     return view('/login');
 });
+
+Route::get('/dashboard', function () {
+    return view('/dashboard');
+});
 Route::post('/signupform',[SignupController::class,'Signup']);
 Route::post('/userlogin',[LoginController::class,'LoginForm']);
+Route::get('/retreive',)

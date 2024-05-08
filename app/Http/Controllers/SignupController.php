@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Hash;
 
 class SignupController extends Controller
 {
@@ -15,7 +16,7 @@ class SignupController extends Controller
         $name=$request->input('name');
         $last_name=$request->input('lname');
         $email=$request->input('email');
-        $password=$request->input('password');
+        $password=Hash::make($request->input('password'));
         $created_at = date("Y-m-d H:i:s");
         $updated_at = date("Y-m-d H:i:s");
         $insert_user=DB::insert("CALL Signup(?,?,?,?,?,?)",array($name,$last_name,$email,$password,$created_at,$updated_at));
