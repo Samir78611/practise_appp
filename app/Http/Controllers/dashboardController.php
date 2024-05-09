@@ -50,4 +50,9 @@ class dashboardController extends Controller
             return redirect(url('dashboard'))->with('fail','deleted not successfully');
         }
     }
+
+    public function editUser($id){
+        $data=DB::select("CALL edit_data_of_student(?)", array($id));
+        return view('edit_student',compact('data'));
+    }
 }

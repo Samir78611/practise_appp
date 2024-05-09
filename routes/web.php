@@ -5,6 +5,7 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\dashboardController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +33,4 @@ Route::post('/userlogin',[LoginController::class,'LoginForm']);
 Route::get('/dashboard',[dashboardController::class,'dashboardUser']);
 Route::post('student_id',[dashboardController::class,'attendence']);
 Route::get('/delete_user/{id}',[dashboardController::class,'delete']);
+Route::get('edit_student/{id}',[dashboardController::class,'editUser']);

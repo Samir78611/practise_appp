@@ -19,7 +19,7 @@
     @if(Session::has('fail'))
         <h2 style="color:red">{{ Session::get('fail') }}</h2>
     @endif
-    <h3>Student Managment System</h3>
+    <h3>Student Managment System</h3><hr>
     <form action="{{url('student_id')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="name">Name:</label>
@@ -58,7 +58,7 @@
             <td><img src="{{url('student/'.$user_details->photo)}}" alt="" width=100px height=100px></td>
             <td>{{$user_details->address}}</td>
             <td>{{$user_details->school}}</td>
-            <td><a href="#">edit</a></td>
+            <td><a href="{{url('edit_student/'.$user_details->id)}}">edit</a></td>
             <td><a href="{{url('delete_user/'.$user_details->id)}}">delete</a></td>
         </tr>
         @endforeach
