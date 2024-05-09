@@ -34,3 +34,6 @@ Route::get('/dashboard',[dashboardController::class,'dashboardUser']);
 Route::post('student_id',[dashboardController::class,'attendence']);
 Route::get('/delete_user/{id}',[dashboardController::class,'delete']);
 Route::get('edit_student/{id}',[dashboardController::class,'editUser']);
+
+// edit_user
+Route::post('/modify',[dashboardController::class,'Updatedetails']);

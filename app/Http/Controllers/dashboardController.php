@@ -55,4 +55,33 @@ class dashboardController extends Controller
         $data=DB::select("CALL edit_data_of_student(?)", array($id));
         return view('edit_student',compact('data'));
     }
+
+    public function Updatedetails(Request $request) {
+        $this->validate($request, [
+            'name'=>'required',
+        ]);
+        $id=$request->input('id');
+        $name=$request->input('name');
+        $city=$request->input('city');
+        $photo=$request->file('photo');
+        if($photo!=""){
+            $photo_new_name=time().'.'.$photo->getClientOriginalExtension();
+            $photo->move(public_path('student'),$photo_new_name);
+        }else{
+            $data=DB::select("CALL edit_data_of_student(?)", array($id));
+            $photo_new_name=$data[0]->photo;
+        }
+        
+        $address=$request->input('address');
+        $school=$request->input('school');
+        $updated_at= date("Y-m-d H:i:s");
+        $update_details=DB::update("CALL update_details	(?,?,?,?,?,?,?)",array($id,$name,$city,$photo_new_name,$address,$school,$updated_at));
+        if($update_details){
+            return redirect(url('dashboard'))->with('success', 'You have succesfully Updated our data');
+        }else{
+            return redirect(url('dashboard'))->with('fail', 'You have not succesfully Updated our data');
+        }
+    
+        
+    }
 }
