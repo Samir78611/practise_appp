@@ -31,3 +31,4 @@ Route::post('/signupform',[SignupController::class,'Signup']);
 Route::post('/userlogin',[LoginController::class,'LoginForm']);
 Route::get('/dashboard',[dashboardController::class,'dashboardUser']);
 Route::post('student_id',[dashboardController::class,'attendence']);
+Route::get('/delete_user/{id}',[dashboardController::class,'delete']);

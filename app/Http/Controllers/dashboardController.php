@@ -10,7 +10,12 @@ use Hash;
 class dashboardController extends Controller
 {
     public function dashboardUser() {
-        return view('dashboard');
+        if(Auth::check()) {
+            $user=Auth::user();
+            $name=$user->name;
+            $retrive=DB::select("CALL retrive_function()");
+            return view('dashboard',compact('name','retrive'));
+        }
     }
 
     public function attendence(Request $request) {
@@ -35,5 +40,14 @@ class dashboardController extends Controller
             return redirect(url('dashboard'))->with('fail','registration not successfully added');
         }
 
+    }
+
+    public function delete($id){
+        if(Auth::check()){
+            $user_interface=DB::delete("CALL delete_user(?)",array($id));
+            return redirect(url('dashboard'))->with('success','deleted successfully');
+        }else{
+            return redirect(url('dashboard'))->with('fail','deleted not successfully');
+        }
     }
 }
