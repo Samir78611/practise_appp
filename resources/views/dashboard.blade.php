@@ -40,6 +40,7 @@
         <input type="submit" class="btn btn-primary" value="Submit">
         <input type="reset" class="btn btn-danger" value="Reset"><hr>
     </form>
+    <a href="{{url('logout_student')}}">Logout</a>
 
     <table border=1>
         <tr>

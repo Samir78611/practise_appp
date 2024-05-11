@@ -84,4 +84,12 @@ class dashboardController extends Controller
     
         
     }
+    public function logout(){
+        if(Auth::check()){
+            $user=Auth::logout();
+            return redirect(url('login'))->with('success','Logout Successfully');
+        }else{
+            return redirect(url('dashboard'))->with('fail','Logout Successfully');
+        }
+    }
 }

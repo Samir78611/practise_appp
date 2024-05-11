@@ -37,3 +37,4 @@ Route::get('edit_student/{id}',[dashboardController::class,'editUser']);
 
 // edit_user
 Route::post('/modify',[dashboardController::class,'Updatedetails']);
+Route::get('/logout_student',[dashboardController::class,'logout']);
